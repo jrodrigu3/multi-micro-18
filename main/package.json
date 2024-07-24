@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",
+    "start": "ng serve --configuration=development",
+    "build": "ng build --configuration=development",
+    "start:prod": "set NODE_ENV=production && ng serve --configuration=production",
+    "build:prod": "set NODE_ENV=production && ng build --configuration=production"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +39,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "ngx-build-plus": "^18.0.0",
+    "ts-loader": "^9.5.1",
     "typescript": "~5.4.2"
   }
 }

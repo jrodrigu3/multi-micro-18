@@ -66,7 +66,13 @@
 						"development": {
 							"optimization": false,
 							"extractLicenses": false,
-							"sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.env.json",
+                  "with": "src/environments/environment.development.env.json"
+                }
+              ]
 						}
 					},
 					"defaultConfiguration": "production"
@@ -75,17 +81,19 @@
 					"builder": "ngx-build-plus:dev-server",
 					"configurations": {
 						"production": {
+              "browserTarget": "main:build:production",
 							"buildTarget": "main:build:production",
 							"extraWebpackConfig": "webpack.prod.config.js"
 						},
 						"development": {
+              "browserTarget": "main:build:development",
 							"buildTarget": "main:build:development"
 						}
 					},
 					"defaultConfiguration": "development",
 					"options": {
-						"port": 4200,
-						"publicHost": "http://localhost:4200",
+						"port": 4300,
+						"publicHost": "http://localhost:4300",
 						"extraWebpackConfig": "webpack.config.js"
 					}
 				},

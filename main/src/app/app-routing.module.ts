@@ -5,6 +5,7 @@ import {
 } from '@angular/router';
 
 import { loadRemoteModule } from '@angular-architects/module-federation';
+import  environment  from '../environments/environment.env.json';
 
 const routes: Routes = [
   {
@@ -12,7 +13,7 @@ const routes: Routes = [
     loadChildren: () =>
       loadRemoteModule({
         type: 'module',
-        remoteEntry: 'http://localhost:4201/remoteEntry.js',
+        remoteEntry: `${environment.remotes.payment}remoteEntry.js`,
         exposedModule: './MainComponent',
       }).then((m) => m.ProductsModule),
   },
