@@ -1,0 +1,33 @@
+<header class="header">
+  <section class="header__logo-menu">
+      <button (click)="toggleCollapsed()" class="v1-button transparent-white-theme button button--transparent-white" id="closeSidebar">
+        <span class="button__icon">
+          <img [src]="icons['menu'].path" [alt]="icons['menu'].alt">
+        </span>
+      </button>
+
+      <img class="header__logo" [src]="icons['logoName'].path" [alt]="icons['logoName'].alt">
+  </section>
+
+  <section class="header__profile-actions">
+    <nav class="nav nav--side" aria-label="nav-second-menu">
+      <ul class="nav__list">
+           <ng-container *ngFor="let menuItem of menuItems">
+            <a *ngIf="menuItem.title === 'Configuración'" [routerLink]="menuItem.link" class="nav__link">
+              <span class="nav__item nav__item--dropdown" style='cursor:pointer;'>
+                <img [src]='menuItem.iconPath' alt="Menu item icon">
+              </span>
+            </a>
+          </ng-container>
+      </ul>
+    </nav>
+    <!-- <div class="header__profile-picture">
+        <a [routerLink]="[settingsPath]" class="header__profile-picture-link">
+          <img [src]="profilePicture" class="header__profile-thumb" alt="User Thumb">
+        </a>
+      </div> -->
+      <div class="header__profile-picture">
+        <span class="header__profile-initial">J</span>
+      </div>
+  </section>
+</header>

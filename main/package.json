@@ -23,6 +23,8 @@
     "@angular/router": "^18.0.0",
     "@ngrx/store": "^18.0.0",
     "@ngrx/store-devtools": "^18.0.0",
+    "primeicons": "^7.0.0",
+    "primeng": "^17.18.5",
     "rxjs": "~7.8.0",
     "zone.js": "~0.14.3"
   },

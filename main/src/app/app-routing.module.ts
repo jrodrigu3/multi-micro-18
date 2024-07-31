@@ -9,7 +9,7 @@ import  environment  from '../environments/environment.env.json';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'payment',
     loadChildren: () =>
       loadRemoteModule({
         type: 'module',
