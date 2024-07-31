@@ -27,7 +27,6 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.store.select(state => state.payment.count).subscribe(data => {
-      debugger;
       this.numero = data
     });
   }
