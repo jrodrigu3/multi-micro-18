@@ -1,0 +1,32 @@
+
+    <svg
+    style="border-radius: 50%;"
+    xmlns="http://www.w3.org/2000/svg"
+    width="14"
+    height="14"
+    viewBox="0 0 200 200"
+    fill="none"
+    color="#15AC52"
+  >
+    <defs>
+      <linearGradient id="spinner-secondHalf">
+        <stop offset="0%" stop-opacity="0" stop-color="currentColor" />
+        <stop offset="100%" stop-opacity="0.5" stop-color="currentColor" />
+      </linearGradient>
+      <linearGradient id="spinner-firstHalf">
+        <stop offset="0%" stop-opacity="1" stop-color="currentColor" />
+        <stop offset="100%" stop-opacity="0.5" stop-color="currentColor" />
+      </linearGradient>
+    </defs>
+  
+    <g stroke-width="60" transform="translate(100, 100)">
+      <path stroke="url(#spinner-secondHalf)" d="M -96 0 A 96 96 0 0 1 96 0" />
+      <path stroke="url(#spinner-firstHalf)" d="M 96 0 A 96 96 0 0 1 -96 0" />
+  
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        d="M -96 0 A 96 96 0 0 1 -96 -2"
+      />
+    </g>
+</svg>
