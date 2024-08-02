@@ -3,6 +3,10 @@ export const checkOutlineIcon = {
   alt: 'Check outline icon'
 };
 
+export const vectorIcon = {
+  path: '../../../assets/new-icons/vector-icon.svg',
+  alt: 'Vector icon'
+};
 
 export const arrowNarrowIcon = {
   path: '../../../assets/new-icons/arrow-narrow-icon.svg',
