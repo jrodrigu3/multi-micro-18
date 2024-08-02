@@ -1,10 +1,12 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
-// @import "./assets/css/variables/css-variables.scss";
+
 @import "./assets/css/buttons/themes/new-buttons-theme.scss";
 
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700&display=swap');
+
 :root {
-	--font-family: 'Red Hat Display', sans-serif;
+	--k-font-family: 'Red Hat Display', sans-serif;
 	--bg-white: #FFF;
 
 	--primary-dark-00: #0666EB;
@@ -168,12 +170,16 @@
   --color-background-border-secundary: #FFF;
 }
 
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
 html {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 body {
-  font-family: var(--font-family);
+  font-family: var(--k-font-family);
   font-weight: normal;
   background: var(--surface-ground);
   color: var(--text-color);
@@ -183,6 +189,38 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+img {
+  vertical-align: middle;
+  border-style: none;
+}
+
 button:not(:disabled) {
   cursor: pointer;
 }
+
+ul li {
+  list-style-type: none;
+}
+
+dl, ol, p, ul {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: transparent;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+}
+
+@media (max-width: 575.98px) {
+  :root {
+      --width-expanded-side-navigation-menu: 100vw;
+  }
+}
+
