@@ -1,7 +1,7 @@
 export const MenuItems = [
   {
     "title": "Home",
-    "iconPath": "../../../../../../../assets/new-icons/new-icons/home-icon.svg",
+    "iconPath": "../../../assets/new-icons/home-icon.svg",
     "expanded": false,
     "subMenus": [
       {
@@ -18,19 +18,19 @@ export const MenuItems = [
   },
   {
     "title": "Clientes",
-    "iconPath": "../../../../../../../assets/new-icons/new-icons/user-version-2.svg",
+    "iconPath": "../../../assets/new-icons/user-version-2.svg",
     "expanded": false,
     "link": "/customers"
   },
   {
     "title": "Ordenes de pago",
-    "iconPath": "../../../../../../../assets/new-icons/new-icons/file-text-version-2.svg",
+    "iconPath": "../../../assets/new-icons/file-text-version-2.svg",
     "expanded": false,
     "link": "/payments/invoices"
   },
   {
     "title": "Cuentas",
-    "iconPath": "../../../../../../assets/new-icons/new-icons/layers-three-icon.svg",
+    "iconPath": "../../../../../../assets/new-icons/layers-three-icon.svg",
     "expanded": false,
     "subMenus": [
       {
@@ -42,7 +42,7 @@ export const MenuItems = [
   },
   {
     "title": "Reportes",
-    "iconPath": "../../../../../../../assets/new-icons/new-icons/file-lines-version-2.svg",
+    "iconPath": "../../../assets/new-icons/file-lines-version-2.svg",
     "expanded": false,
     "subMenus": [
       {
@@ -59,7 +59,7 @@ export const MenuItems = [
   },
   {
     "title": "Configuración",
-    "iconPath": "../../../../../../../../../../assets/new-icons/settings-icon.svg",
+    "iconPath": "../../../../../../assets/new-icons/settings-icon.svg",
     "expanded": false,
     "link": "/new_configuration_layout"
   }

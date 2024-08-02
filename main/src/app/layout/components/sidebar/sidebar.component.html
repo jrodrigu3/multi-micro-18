@@ -1,154 +1,98 @@
-<p-sidebar #sidebarRef [(visible)]="sidebarVisible" [dismissible]="false">
-  <ng-template pTemplate="headless">
-    <div class="flex flex-column h-full">
-      <div class="flex align-items-center justify-content-between px-4 pt-3 flex-shrink-0">
-        <p-button type="button" (onClick)="closeCallback($event)" icon="pi pi-times" rounded="true" outlined="true"
-          styleClass="h-2rem w-2rem"></p-button>
+<ng-container *ngIf="isExpanded$ | async as isExpandedValue"></ng-container>
+
+<aside class="aside-menu" [ngClass]="{'aside-menu--collapsed': !isExpanded(), 'aside-menu--expanded': isExpanded()}">
+  <div class="aside-menu__content aside-menu__content--fixed">
+
+    <section class="aside-menu__logo">
+      <div>
+        <img *ngIf="isExpanded()" class="aside-menu__logo-img" [src]="icons['logoName'].path" [alt]="icons['logoName'].alt">
+        <img *ngIf="!isExpanded()" class="aside-menu__logo-img" style="cursor:pointer;" (click)="toggleSidebar()"
+          (keypress)="toggleSidebar()" [src]="icons['logoK'].path" [alt]="icons['logoK'].alt">
+
+        <button (click)="toggleSidebar()" *ngIf="isExpanded()" class="v1-button transparent-white-theme">
+          <img class="v1-button__img button_x" [src]="icons['bluePlus'].path" [alt]="icons['bluePlus'].alt">
+        </button>
       </div>
-      <div class="overflow-y-auto">
-        <ul class="list-none p-3 m-0">
-          <li>
-            <div pRipple pStyleClass="@next" enterClass="hidden" enterActiveClass="slidedown" leaveToClass="hidden"
-              leaveActiveClass="slideup"
-              class="p-3 flex align-items-center justify-content-between text-600 cursor-pointer p-ripple">
-              <span class="font-medium">FAVORITES</span>
-              <i class="pi pi-chevron-down"></i>
-            </div>
-            <ul class="list-none p-0 m-0 overflow-hidden">
-              <li>
-                <a pRipple
-                  class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
-                  <i class="pi pi-home mr-2"></i>
-                  <span class="font-medium">Dashboard</span>
-                </a>
-              </li>
-              <li>
-                <a pRipple
-                  class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
-                  <i class="pi pi-bookmark mr-2"></i>
-                  <span class="font-medium">Bookmarks</span>
-                </a>
-              </li>
-              <li>
-                <a pRipple pStyleClass="@next" enterClass="hidden" enterActiveClass="slidedown" leaveToClass="hidden"
-                  leaveActiveClass="slideup"
-                  class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
-                  <i class="pi pi-chart-line mr-2"></i>
-                  <span class="font-medium">Reports</span>
-                  <i class="pi pi-chevron-down ml-auto"></i>
-                </a>
-                <ul
-                  class="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out">
-                  <li>
-                    <a pRipple pStyleClass="@next" enterClass="hidden" enterActiveClass="slidedown"
-                      leaveToClass="hidden" leaveActiveClass="slideup"
-                      class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
-                      <i class="pi pi-chart-line mr-2"></i>
-                      <span class="font-medium">Revenue</span>
-                      <i class="pi pi-chevron-down ml-auto"></i>
-                    </a>
-                    <ul
-                      class="list-none py-0 pl-3 pr-0 m-0 hidden overflow-y-hidden transition-all transition-duration-400 transition-ease-in-out">
-                      <li>
-                        <a pRipple
-                          class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
-                          <i class="pi pi-table mr-2"></i>
-                          <span class="font-medium">View</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a pRipple
-                          class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
-                          <i class="pi pi-search mr-2"></i>
-                          <span class="font-medium">Search</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a pRipple
-                      class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
-                      <i class="pi pi-chart-line mr-2"></i>
-                      <span class="font-medium">Expenses</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a pRipple
-                  class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
-                  <i class="pi pi-users mr-2"></i>
-                  <span class="font-medium">Team</span>
-                </a>
-              </li>
-              <li>
-                <a pRipple
-                  class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
-                  <i class="pi pi-comments mr-2"></i>
-                  <span class="font-medium">Messages</span>
-                  <span class="inline-flex align-items-center justify-content-center ml-auto bg-primary border-circle"
-                    style="min-width: 1.5rem; height: 1.5rem">3</span>
-                </a>
-              </li>
-              <li>
-                <a pRipple
-                  class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
-                  <i class="pi pi-calendar mr-2"></i>
-                  <span class="font-medium">Calendar</span>
-                </a>
-              </li>
-              <li>
-                <a pRipple
-                  class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
-                  <i class="pi pi-cog mr-2"></i>
-                  <span class="font-medium">Settings</span>
-                </a>
-              </li>
-            </ul>
-          </li>
+    </section>
+
+    <nav class="aside-menu__nav" aria-label="nav-menu">
+      <ul class="aside-menu__list">
+        <ng-container *ngFor="let menuItem of menuItems">
+          <ng-container
+            *ngTemplateOutlet="menuItem.link && !menuItem.subMenus ? noNestedMenuItem : nestedMenuItem"></ng-container>
+
+          <ng-template #noNestedMenuItem>
+            <li *ngIf="menuItem.title !== 'Configuración'" class="aside-menu__list-item">
+              <a style='cursor:pointer;' class="aside-menu__link" [routerLink]="menuItem.link">
+                <span class="aside-menu__icon">
+                  <img [src]='menuItem.iconPath' alt="Menu item icon">
+                </span>
+
+                <span class='aside-menu__title' *ngIf="isExpanded()">{{ menuItem.title }}</span>
+              </a>
+            </li>
+          </ng-template>
+
+          <ng-template #nestedMenuItem>
+            <li *ngIf="menuItem.title !== 'Configuración'">
+              <p class="aside-menu__link" (keypress)="toggleExpansion(menuItem)" (click)="toggleExpansion(menuItem)">
+                <span class='aside-menu__icon'>
+                  <img [src]='menuItem.iconPath' alt="Menu item icon">
+                </span>
+
+                <span class='aside-menu__title' *ngIf="isExpanded()">{{ menuItem.title }}</span>
+                <img *ngIf="isExpanded()" class="aside-menu__drop-menu" [src]="icons['dropMenu'].path" [alt]="icons['dropMenu'].alt" />
+              </p>
+
+              <ul class="aside-menu__sub-list" [ngStyle]="menuItem.expanded && isExpanded() ? {'opacity': 1, 'height': 'fit-content'} : null">
+                <li class="aside-menu__sub-list-item" *ngFor="let subMenuItem of menuItem.subMenus">
+                  <a [href]='subMenuItem.link' class="aside-menu__sub-link">
+                    <span class='aside-menu__sub-icon'>
+                      <img [src]='subMenuItem.iconPath' alt="Sub menu item icon">
+                    </span>
+
+                    {{ subMenuItem.title }}
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ng-template>
+        </ng-container>
+      </ul>
+    </nav>
+
+    <section class="aside-menu__configuration">
+      <nav class="aside-menu__nav" aria-label="nav-second-menu">
+        <ul class="aside-menu__list">
+          <ng-container *ngFor="let menuItem of menuItems">
+            <li *ngIf="menuItem.title === 'Configuración'" class="aside-menu__list-item">
+              <a style='cursor:pointer;' class="aside-menu__link" [routerLink]="menuItem.link">
+                <span class="aside-menu__icon">
+                  <img [src]='menuItem.iconPath' alt="Menu item icon">
+                </span>
+
+                <span class='aside-menu__title' *ngIf="isExpanded()">{{ menuItem.title }}</span>
+              </a>
+            </li>
+          </ng-container>
         </ul>
-        <ul class="list-none p-3 m-0">
-          <li>
-            <div pRipple pStyleClass="@next" enterClass="hidden" enterActiveClass="slidedown" leaveToClass="hidden"
-              leaveActiveClass="slideup"
-              class="p-3 flex align-items-center justify-content-between text-600 cursor-pointer p-ripple">
-              <span class="font-medium">APPLICATION</span>
-              <i class="pi pi-chevron-down"></i>
-            </div>
-            <ul class="list-none p-0 m-0 overflow-hidden">
-              <li>
-                <a pRipple
-                  class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
-                  <i class="pi pi-folder mr-2"></i>
-                  <span class="font-medium">Projects</span>
-                </a>
-              </li>
-              <li>
-                <a pRipple
-                  class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
-                  <i class="pi pi-chart-bar mr-2"></i>
-                  <span class="font-medium">Performance</span>
-                </a>
-              </li>
-              <li>
-                <a pRipple
-                  class="flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
-                  <i class="pi pi-cog mr-2"></i>
-                  <span class="font-medium">Settings</span>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <div class="mt-auto">
-        <hr class="mb-3 mx-3 border-top-1 border-none surface-border" />
-        <a pRipple
-          class="m-3 flex align-items-center cursor-pointer p-3 gap-2 border-round text-700 hover:surface-100 transition-duration-150 transition-colors p-ripple">
-          <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" shape="circle" />
-          <span class="font-bold">Amy Elsner</span>
-        </a>
-      </div>
-    </div>
-  </ng-template>
-</p-sidebar>
+      </nav>
+    </section>
+
+    <footer class="aside-menu__footer">
+      <section class="aside-menu__profile">
+        <a [ngStyle]="{'margin-right': isExpanded() ? '12px' : '0'}" href="#" class="aside-menu__profile-picture">J</a>
+        <div class="aside-menu__profile-data" *ngIf="isExpanded()">
+          <p [title]="'profileName'" class="aside-menu__profile-name">profileName</p>
+          <p [title]="'profileEmail'" class="aside-menu__profile-email">profileEmail</p>
+        </div>
+        <button *ngIf="isExpanded()" class="log-in-button">
+          <img [src]="icons['logIn'].path" [alt]="icons['logIn'].alt">
+        </button>
+      </section>
+
+      <p class="aside-menu__version">© Kashio 2017-2024 <br> v x.x.x.x</p>
+    </footer>
+
+  </div>
+</aside>
