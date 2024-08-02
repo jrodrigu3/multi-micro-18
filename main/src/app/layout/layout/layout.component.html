@@ -1,8 +1,11 @@
-<div>
-  <app-sidebar></app-sidebar>
-  <div>
-    <app-header></app-header>
-    <div>
+<ng-container *ngIf="isExpanded$ | async as isExpandedValue"></ng-container>
+
+<div class="layout">
+  <app-header></app-header>
+  <div class="layout__container">
+    <app-sidebar class="layout__sidebar" [ngClass]="{'layout__sidebar--expanded': isExpanded(), 'layout__sidebar--collapsed': !isExpanded()}"></app-sidebar>
+    <div class="layout__main" [ngClass]="{'layout__main--expanded': isExpanded(), 'layout__main--collapsed': !isExpanded()}">
+      <p>CONTENT AREA</p>
       <router-outlet></router-outlet>
     </div>
   </div>
