@@ -30,6 +30,7 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { SidebarComponent } from './layout/components/sidebar/sidebar.component';
 import { HeaderComponent } from './layout/components/header/header.component';
 import { LayoutComponent } from './layout/layout/layout.component';
+import { CommonModule, NgStyle } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -56,9 +57,12 @@ import { LayoutComponent } from './layout/layout/layout.component';
     FormsModule,
     FloatLabelModule,
     MenubarModule,
-    BadgeModule
+    BadgeModule,
+    CommonModule
   ],
-  providers: [],
+  providers: [
+    // MediaMatcher
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

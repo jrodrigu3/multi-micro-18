@@ -5,77 +5,83 @@
   background-color: var(--bg-white);
   position: fixed;
   z-index: 12;
-  transition: all .3s ease-out;
+  transition: all 0.3s ease-out;
   border-bottom: 1px solid #E9EBF0;
   justify-content: space-between;
   align-items: center;
   padding: 0rem 1rem;
-}
 
-.header__logo-menu,
-.header__profile-actions {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0px 1.25rem;
-}
+  &__logo-menu,
+  &__profile-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0px 1.25rem;
+  }
 
-.header__logo {
-  width: 6rem;
-  height: auto;
-}
+  &__logo {
+    width: 6rem;
+    height: auto;
+  }
 
-.header__profile-picture {
-  border-radius: 50%;
-  width: 2.5rem;
-  height: 2.5rem;
-  background-color: #2980b9;
-  display: flex;
-  color: whitesmoke;
-  align-items: center;
-  justify-content: center;
-}
+  &__profile-picture {
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #2980b9;
+    display: flex;
+    color: whitesmoke;
+    align-items: center;
+    justify-content: center;
+  }
 
-.header__profile-initial {
-  text-align: center;
-}
+  &__profile-initial {
+    text-align: center;
+  }
 
-.header__profile-thumb {
-  border-radius: 50%;
-  width: 2.5rem;
-  height: 2.5rem;
-}
+  &__profile-thumb {
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 
-.nav__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+  @media (max-width: 575.98px) {
+    &__logo-menu {
+      justify-content: space-between;
+      flex-direction: row-reverse;
+      width: 100%;
+    }
 
-.nav__item--dropdown img {
-  filter: opacity(0.5);
-}
+    &__profile-actions {
+      display: none;
+    }
+  }
 
-.nav__link {
-  color: var(--colors-text-secondary-dark-00);
-  font-size: var(--font-small);
-  display: block;
-}
+  @media (min-width: 576px) {
+    &__logo-menu {
+      flex-direction: row;
+    }
+  }
 
-@media (min-width: 992px) {
-  .header {
+  @media (min-width: 992px) {
     display: none;
   }
 }
 
-@media (max-width: 575.98px) {
-  .header__logo-menu {
-    justify-content: space-between;
-    flex-direction: row-reverse;
-    width: 100%;
+.nav {
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
-  .header__profile-actions {
-    display: none;
+  &__list-item--dropdown img {
+    filter: opacity(0.5);
+  }
+
+  &__link {
+    color: var(--colors-text-secondary-dark-00);
+    font-size: var(--font-small);
+    display: block;
   }
 }

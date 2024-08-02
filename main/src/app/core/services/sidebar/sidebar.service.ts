@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { computed, Injectable, Signal, signal, WritableSignal } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -6,13 +6,15 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SidebarService {
 
-  private collapsedMenuSubject = new BehaviorSubject<boolean>(false);
-  collapsedMenuSubject$ = this.collapsedMenuSubject.asObservable();
+  expandedMenuSubjecte: WritableSignal<boolean> = signal<boolean>(false);
 
   constructor() { }
 
-  toggleSidebar() {
-    this.collapsedMenuSubject.next(!this.collapsedMenuSubject.value);
-    localStorage.setItem('statusMenu', JSON.stringify(!this.collapsedMenuSubject.value));
+  toggleSidebare() {
+    this.expandedMenuSubjecte.update(value => !value);
+  }
+
+  select(): Signal<boolean> {
+    return computed(() => this.expandedMenuSubjecte());
   }
 }

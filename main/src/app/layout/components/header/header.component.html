@@ -1,33 +1,28 @@
 <header class="header">
   <section class="header__logo-menu">
-      <button (click)="toggleCollapsed()" class="v1-button transparent-white-theme button button--transparent-white" id="closeSidebar">
-        <span class="button__icon">
-          <img [src]="icons['menu'].path" [alt]="icons['menu'].alt">
-        </span>
-      </button>
+    <button (click)="toggleCollapsed()" class="v1-button transparent-white-theme">
+      <img class="button__icon" [src]="icons['menu'].path" [alt]="icons['menu'].alt">
+    </button>
 
-      <img class="header__logo" [src]="icons['logoName'].path" [alt]="icons['logoName'].alt">
+    <img class="header__logo" [src]="icons['logoName'].path" [alt]="icons['logoName'].alt">
   </section>
 
   <section class="header__profile-actions">
-    <nav class="nav nav--side" aria-label="nav-second-menu">
+    <nav class="nav">
       <ul class="nav__list">
-           <ng-container *ngFor="let menuItem of menuItems">
-            <a *ngIf="menuItem.title === 'Configuración'" [routerLink]="menuItem.link" class="nav__link">
-              <span class="nav__item nav__item--dropdown" style='cursor:pointer;'>
-                <img [src]='menuItem.iconPath' alt="Menu item icon">
-              </span>
-            </a>
-          </ng-container>
+        @for (menuItem of menuItems; track menuItem.title) {
+          @if (menuItem.title === 'Configuración') {
+          <a [routerLink]="menuItem.link" class="nav__link">
+            <span class="nav__list-item--dropdown" style='cursor:pointer;'>
+              <img [src]='menuItem.iconPath' alt="Menu item icon">
+            </span>
+          </a>
+          }
+        }
       </ul>
     </nav>
-    <!-- <div class="header__profile-picture">
-        <a [routerLink]="[settingsPath]" class="header__profile-picture-link">
-          <img [src]="profilePicture" class="header__profile-thumb" alt="User Thumb">
-        </a>
-      </div> -->
-      <div class="header__profile-picture">
-        <span class="header__profile-initial">J</span>
-      </div>
+    <div class="header__profile-picture">
+      <span class="header__profile-initial">J</span>
+    </div>
   </section>
 </header>

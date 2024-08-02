@@ -1,10 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, effect, inject, OnDestroy, OnInit, Signal, WritableSignal } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { SidebarService } from '../../../core/services/sidebar/sidebar.service';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { MenuItemRender } from './utils/interfaces/menu-item.interface';
 import { arrowNarrowIcon, bluePlusIcon, calendarIcon, checkOutlineIcon, copyIcon, csvFileIcon, dotsVerticalIcon, editIcon, filterLinesIcon, logoNameIcon, menuIcon, searchIcon, txtFileIcon, uploadArrowIcon, xlsFileIcon, xlsxFileIcon } from '../../../shared/const/icons.constans';
-import { MenuItems } from './utils/const/menu-item.constants';
+import { HeaderMenuItems } from './utils/const/header-menu-item.constants';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +13,7 @@ import { MenuItems } from './utils/const/menu-item.constants';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  collapsed: boolean = false;
+  readonly isExpanded: Signal<boolean>;
   private destroy$ = new Subject<void>();
   menuItems!: MenuItemRender[];
   showMenuItem: boolean = false;
@@ -21,12 +21,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   settingsPath: string = '/new_configuration_layout';
   profilePicture: string = "";
 
-  constructor(
-    private _sidebarService: SidebarService
-  ) {
+  private _sidebarService = inject(SidebarService);
+
+  constructor() {
     this.icons = this.setIcons();
-    this.collapsed = JSON.parse(localStorage.getItem("statusMenu") ?? 'false')
-    this.menuItems = MenuItems
+    this.menuItems = HeaderMenuItems;
+    this.isExpanded = this._sidebarService.expandedMenuSubjecte.asReadonly();
+    effect(()=> console.log(`The value of ${this.isExpanded()} has changed`));
   }
 
   ngOnInit() {
@@ -39,12 +40,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   collapsedMenu() {
-    this._sidebarService.collapsedMenuSubject$
-    .pipe(
-      takeUntil(this.destroy$),
-      tap((isVisible) => (this.collapsed = isVisible))
-    )
-    .subscribe();
+    // this._sidebarService.expandedMenuSubject$
+    // .pipe(
+    //   takeUntil(this.destroy$),
+    //   tap((isVisible) => (this.isExpanded = isVisible))
+    // )
+    // .subscribe();
+    // this.isExpanded = this._sidebarService.expandedMenuSubject();
   }
 
   setIcons(): { [key: string]: { path: string, alt: string } } {
@@ -73,8 +75,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   toggleCollapsed() {
-    const statusMenu = JSON.parse(localStorage.getItem("statusMenu") ?? 'false');
-    this.collapsed = !statusMenu;
-    this._sidebarService.toggleSidebar();
+    this._sidebarService.toggleSidebare();
   }
 }
